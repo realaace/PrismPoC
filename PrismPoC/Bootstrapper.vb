@@ -20,6 +20,7 @@ Public Class Bootstrapper
     Protected Overrides Sub ConfigureModuleCatalog()
         MyBase.ConfigureModuleCatalog()
 
+        '3 modules
         Dim moduleCatalog As ModuleCatalog = CType(Me.ModuleCatalog, ModuleCatalog)
         moduleCatalog.AddModule(GetType(MenuModule.MenuModule))
         moduleCatalog.AddModule(GetType(ToolbarModule.ToolbarModule))
