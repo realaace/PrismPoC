@@ -4,13 +4,13 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
-    <RootNamespace>PrismPOC.Infrastructure</RootNamespace>
-    <AssemblyName>PrismPOC.Infrastructure</AssemblyName>
+    <RootNamespace>TransactionModule</RootNamespace>
+    <AssemblyName>TransactionModule</AssemblyName>
     <OutputType>Library</OutputType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <MyType>Custom</MyType>
-    <ProjectGuid>{4DEB0A38-A29E-44FF-AD90-7383A276894C}</ProjectGuid>
+    <ProjectGuid>{90DBF79E-6003-4248-ADA3-1A42D26389FE}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -19,7 +19,7 @@
     <DefineTrace>true</DefineTrace>
     <IncrementalBuild>true</IncrementalBuild>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>PrismPOC.Infrastructure.xml</DocumentationFile>
+    <DocumentationFile>TransactionModule.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -30,7 +30,7 @@
     <IncrementalBuild>false</IncrementalBuild>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>PrismPOC.Infrastructure.xml</DocumentationFile>
+    <DocumentationFile>TransactionModule.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -79,7 +79,6 @@
     <Import Include="System.Windows.Navigation" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events.vb" />
     <Compile Include="My Project\AssemblyInfo.vb">
       <SubType>Code</SubType>
     </Compile>
@@ -93,8 +92,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RegionNames.vb" />
-    <Compile Include="SplitPanes.vb" />
+    <Compile Include="TransactionModule.vb" />
+    <Compile Include="TransactionView.xaml.vb">
+      <DependentUpon>TransactionView.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -107,16 +108,24 @@
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="SplitPaneStyles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Infragistics.Composite.Wpf.Proxies\Infragistics.Composite.Wpf.Proxies.csproj">
+    <ProjectReference Include="..\..\..\Infragistics.Composite.Wpf.Proxies\Infragistics.Composite.Wpf.Proxies.csproj">
       <Project>{BBD5D04E-268A-4B7E-83BD-0E28506899CD}</Project>
       <Name>Infragistics.Composite.Wpf.Proxies</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Infragistics.Composite.Wpf\Infragistics.Composite.Wpf.csproj">
+      <Project>{A2C2BFD4-55EB-4690-A710-FE8355BAFE4F}</Project>
+      <Name>Infragistics.Composite.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\PrismPOC.Infrastructure\PrismPOC.Infrastructure.vbproj">
+      <Project>{4DEB0A38-A29E-44FF-AD90-7383A276894C}</Project>
+      <Name>PrismPOC.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="TransactionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

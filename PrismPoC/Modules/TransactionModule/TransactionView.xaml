@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="TransactionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ncal="http://infragistics.com/ncal"
+             xmlns:inf="clr-namespace:PrismPOC.Infrastructure;assembly=PrismPOC.Infrastructure"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             ncal:XamDockManagerSettings.IsContentPaneInTabGroup="True"
+             ncal:XamDockManagerSettings.SplitPaneName="{x:Static inf:SplitPanes.LeftSidePaneName}"
+             ncal:XamDockManagerSettings.SplitPaneProxyStyle="{Binding Source={x:Static inf:SplitPanes.Styles}, Path=LeftSidePane}">
+
+    <ncal:XamDockManagerSettings.ContentPaneProxyStyle>
+        <Style TargetType="{x:Type ncal:ContentPaneProxy}">
+            <Setter Property="Header" Value="Transactions" />
+        </Style>
+    </ncal:XamDockManagerSettings.ContentPaneProxyStyle>
+
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="Transaction View" />
+</UserControl>

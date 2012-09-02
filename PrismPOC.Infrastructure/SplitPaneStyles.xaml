@@ -1,0 +1,19 @@
+﻿<ResourceDictionary 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="clr-namespace:PrismPOC.Infrastructure"
+  xmlns:ncal="http://infragistics.com/ncal"
+  >
+    <!-- This Style configures the SplitPane that is initially located on the lefthand side of the XamDockManager. -->
+    <Style x:Key="{x:Static local:SplitPanes.LeftSidePaneName}" TargetType="{x:Type ncal:SplitPaneProxy}">
+        <Setter Property="ncal:XamDockManagerProxy.InitialLocation" Value="DockedLeft" />
+        <Setter Property="SplitterOrientation" Value="Horizontal" />
+        <Setter Property="Width" Value="300" />
+    </Style>
+
+    <!-- This Style configures the SplitPane that is initially located on the righthand side of the XamDockManager. -->
+    <Style x:Key="{x:Static local:SplitPanes.RightSidePaneName}" TargetType="{x:Type ncal:SplitPaneProxy}">
+        <Setter Property="ncal:XamDockManagerProxy.InitialLocation" Value="DockedRight" />
+        <Setter Property="Width" Value="400" />
+    </Style>
+</ResourceDictionary>

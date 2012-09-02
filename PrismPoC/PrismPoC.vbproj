@@ -55,6 +55,8 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="InfragisticsWPF4.DockManager.v12.1, Version=12.1.20121.2059, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="InfragisticsWPF4.v12.1, Version=12.1.20121.2059, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.Prism.UnityExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -146,13 +148,33 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Infragistics.Composite.Wpf.Proxies\Infragistics.Composite.Wpf.Proxies.csproj">
+      <Project>{BBD5D04E-268A-4B7E-83BD-0E28506899CD}</Project>
+      <Name>Infragistics.Composite.Wpf.Proxies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infragistics.Composite.Wpf\Infragistics.Composite.Wpf.csproj">
+      <Project>{A2C2BFD4-55EB-4690-A710-FE8355BAFE4F}</Project>
+      <Name>Infragistics.Composite.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrismPOC.Infrastructure\PrismPOC.Infrastructure.vbproj">
+      <Project>{4DEB0A38-A29E-44FF-AD90-7383A276894C}</Project>
+      <Name>PrismPOC.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="Modules\MenuModule\MenuModule.vbproj">
       <Project>{ADAD093F-9330-4F6D-BBF9-F9D3AFD9EB48}</Project>
       <Name>MenuModule</Name>
     </ProjectReference>
+    <ProjectReference Include="Modules\SavedQuery\SavedQueryModule.vbproj">
+      <Project>{AC842881-8465-45AD-A406-2C6065B0F2D5}</Project>
+      <Name>SavedQueryModule</Name>
+    </ProjectReference>
     <ProjectReference Include="Modules\ToolbarModule\ToolbarModule.vbproj">
       <Project>{E9B488CA-61A5-4CA6-BC9F-EDA0C8796E98}</Project>
       <Name>ToolbarModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="Modules\TransactionModule\TransactionModule.vbproj">
+      <Project>{90DBF79E-6003-4248-ADA3-1A42D26389FE}</Project>
+      <Name>TransactionModule</Name>
     </ProjectReference>
     <ProjectReference Include="Modules\XamDockManagerModule\XamDockManagerModule.vbproj">
       <Project>{CCFD52A3-21C6-4D88-9AE6-B1891FFBF88D}</Project>
