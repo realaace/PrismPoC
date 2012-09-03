@@ -8,7 +8,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              ncal:XamDockManagerSettings.IsContentPaneInTabGroup="True"
-             ncal:XamDockManagerSettings.SplitPaneName="{x:Static inf:SplitPanes.LeftSidePaneName}"
+             ncal:XamDockManagerSettings.IsContentPaneInDocumentContentHost="True"
+             ncal:XamDockManagerSettings.SplitPaneName="mainSplitPane"
              ncal:XamDockManagerSettings.SplitPaneProxyStyle="{Binding Source={x:Static inf:SplitPanes.Styles}, Path=LeftSidePane}">
 
     <ncal:XamDockManagerSettings.ContentPaneProxyStyle>
@@ -16,6 +17,5 @@
             <Setter Property="Header" Value="Transactions" />
         </Style>
     </ncal:XamDockManagerSettings.ContentPaneProxyStyle>
-
-    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="Transaction View" />
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="Transaction View" />
 </UserControl>

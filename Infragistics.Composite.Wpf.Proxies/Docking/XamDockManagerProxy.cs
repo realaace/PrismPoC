@@ -108,6 +108,14 @@ namespace Infragistics.Composite.Wpf.Proxies.Docking
                 _xamDockManager.Panes.Add(splitPaneProxy.SplitPane);
         }
 
+        public void AddContentPaneToDocumentHost(ContentPaneProxy contentPaneProxy)
+        {
+            if (contentPaneProxy == null)
+                throw new ArgumentNullException("contentPaneProxy");
+
+            _xamDockManager.AddDocument(contentPaneProxy.Header, contentPaneProxy.ContentPane.Content);
+
+        }
         #endregion // Methods
 
         #region Attached Properties

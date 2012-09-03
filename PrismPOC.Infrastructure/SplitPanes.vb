@@ -4,11 +4,13 @@ Imports System.Windows
 Public Class SplitPanes
     Public Const LeftSidePaneName As String = "SPLITPANE_LeftSide"
     Public Const RightSidePaneName As String = "SPLITPANE_RightSide"
+    Public Const BottomPaneName As String = "SPLITPANE_Bottom"
 
     Shared s_styles As SplitPanes
 
     ReadOnly _leftSidePaneStyle As Style
     ReadOnly _rightSidePaneStyle As Style
+    ReadOnly _bottomPaneStyle As Style
 
     Public Shared ReadOnly Property Styles() As SplitPanes
         Get
@@ -25,6 +27,8 @@ Public Class SplitPanes
 
         _leftSidePaneStyle = TryCast(paneStyles(LeftSidePaneName), Style)
         _rightSidePaneStyle = TryCast(paneStyles(RightSidePaneName), Style)
+        _bottomPaneStyle = TryCast(paneStyles(BottomPaneName), Style)
+
     End Sub
 
     ''' <summary>
@@ -46,4 +50,15 @@ Public Class SplitPanes
             Return _rightSidePaneStyle
         End Get
     End Property
+
+    ''' <summary>
+    ''' The Style applied to the <see cref="SplitPane"/> initially docked 
+    ''' to the bottom of the <see cref="XamDockManager"/> region.
+    ''' </summary>
+    Public ReadOnly Property BottomPane() As Style
+        Get
+            Return _bottomPaneStyle
+        End Get
+    End Property
+
 End Class

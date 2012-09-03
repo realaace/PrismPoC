@@ -96,6 +96,44 @@ namespace Infragistics.Composite.Wpf.Docking
 
         #endregion // IsContentPaneInTabGroup
 
+        #region IsContentPaneInDocumentContentHost
+
+        /// <summary>
+        /// Gets the <see cref="IsContentPaneInDocumentContentHostProperty"/> attached property.
+        /// </summary>
+        /// <param name="obj">The <see cref="DependencyObject"/> on which the property is set.</param>
+        public static bool GetIsContentPaneInDocumentContentHost(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsContentPaneInDocumentContentHostProperty);
+        }
+
+        /// <summary>
+        /// Sets the <see cref="IsContentPaneInDocumentContentHostProperty"/> attached property.
+        /// </summary>
+        /// <param name="obj">The <see cref="DependencyObject"/> on which the property is set.</param>
+        /// <param name="value">The bool that determines whether the <see cref="ContentPane"/> created for a View is added to a <see cref="DocumentContentHost"/> or not.</param>
+        public static void SetIsContentPaneInDocumentContentHost(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsContentPaneInDocumentContentHostProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the IsContentPaneInDocumentContentHost attached property.
+        /// </summary>
+        /// <remarks>
+        /// The <see cref="ContentPaneStyle"/> attached property must be set on the
+        /// root element in a View in order for it to be applied to the <see cref="ContentPane"/>
+        /// in which that View is hosted.  The default value is true.
+        /// </remarks>
+        public static readonly DependencyProperty IsContentPaneInDocumentContentHostProperty =
+            DependencyProperty.RegisterAttached(
+            "IsContentPaneInDocumentContentHost",
+            typeof(bool),
+            typeof(XamDockManagerSettings),
+            new UIPropertyMetadata(true));
+
+        #endregion // IsContentPaneInDocumentContentHost
+
         #region SplitPaneProxyStyle
 
         /// <summary>

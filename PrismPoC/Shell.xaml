@@ -17,7 +17,10 @@
         <ContentControl Grid.Row="1" Name="ToolbarRegion" prism:RegionManager.RegionName="ToolbarRegion" />
         <!--<ContentControl Grid.Row="2" Name="XamDockManagerRegion" prism:RegionManager.RegionName="XamDockManagerRegion" />-->
         <igDock:XamDockManager Grid.Row="2" x:Name="DockRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.DockingAreaRegion}" Theme="Office2k7Black">
-
+            <igDock:DocumentContentHost Background="DarkGray">
+                <igDock:SplitPane x:Name="mainSplitPane">
+                </igDock:SplitPane>
+            </igDock:DocumentContentHost>
         </igDock:XamDockManager>
 
         <StatusBar Grid.Row="3"><Slider x:Name="ZoomSlider" Height="25"  Width="100" Maximum="2" TickFrequency="0.4" TickPlacement="BottomRight" LargeChange="0.4" /></StatusBar>

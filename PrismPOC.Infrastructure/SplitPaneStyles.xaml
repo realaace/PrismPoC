@@ -6,14 +6,22 @@
   >
     <!-- This Style configures the SplitPane that is initially located on the lefthand side of the XamDockManager. -->
     <Style x:Key="{x:Static local:SplitPanes.LeftSidePaneName}" TargetType="{x:Type ncal:SplitPaneProxy}">
-        <Setter Property="ncal:XamDockManagerProxy.InitialLocation" Value="DockedLeft" />
+        <!--<Setter Property="ncal:XamDockManagerProxy.InitialLocation" Value="DockedLeft" />-->
         <Setter Property="SplitterOrientation" Value="Horizontal" />
-        <Setter Property="Width" Value="300" />
+        <Setter Property="Width" Value="200" />
     </Style>
 
     <!-- This Style configures the SplitPane that is initially located on the righthand side of the XamDockManager. -->
     <Style x:Key="{x:Static local:SplitPanes.RightSidePaneName}" TargetType="{x:Type ncal:SplitPaneProxy}">
         <Setter Property="ncal:XamDockManagerProxy.InitialLocation" Value="DockedRight" />
-        <Setter Property="Width" Value="400" />
+        <Setter Property="Width" Value="200" />
     </Style>
+
+    <!-- This Style configures the SplitPane that is initially located on the lefthand side of the XamDockManager. -->
+    <Style x:Key="{x:Static local:SplitPanes.BottomPaneName}" TargetType="{x:Type ncal:SplitPaneProxy}">
+        <Setter Property="ncal:XamDockManagerProxy.InitialLocation" Value="DockedBottom" />
+        <Setter Property="SplitterOrientation" Value="Vertical" />
+        <Setter Property="Height" Value="200" />
+    </Style>
+
 </ResourceDictionary>

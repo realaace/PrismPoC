@@ -89,10 +89,18 @@ namespace Infragistics.Composite.Wpf.Docking
             // attached InitialLocation property can be set first, via a Style.
             dockManagerProxy.AddSplitPaneToElementTree(splitPaneProxy);
 
-            // ADD VIEW TO DOCKMANAGER
-            bool isInTabGroup = this.ShouldAddViewToTabPaneGroup(view);
-            splitPaneProxy.AddContentPaneProxy(contentPaneProxy, isInTabGroup);
-
+            // YCL - Added support to add view to the DocumentContentHost
+            bool isInDocumentContentHost = this.ShouldAddViewToDocumentContentHost(view);
+            if (isInDocumentContentHost)
+            {
+                dockManagerProxy.AddContentPaneToDocumentHost(contentPaneProxy);
+            }
+            else
+            {
+                // ADD VIEW TO DOCKMANAGER
+                bool isInTabGroup = this.ShouldAddViewToTabPaneGroup(view);
+                splitPaneProxy.AddContentPaneProxy(contentPaneProxy, isInTabGroup);            
+            }
             return base.Add(view, viewName, createRegionManagerScope);
         }
 
@@ -179,6 +187,15 @@ namespace Infragistics.Composite.Wpf.Docking
             DependencyObject depObj = view as DependencyObject;
             if (depObj != null)
                 return XamDockManagerSettings.GetIsContentPaneInTabGroup(depObj);
+
+            return true;
+        }
+
+        bool ShouldAddViewToDocumentContentHost(object view)
+        {
+            DependencyObject depObj = view as DependencyObject;
+            if (depObj != null)
+                return XamDockManagerSettings.GetIsContentPaneInDocumentContentHost(depObj);
 
             return true;
         }

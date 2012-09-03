@@ -8,6 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              ncal:XamDockManagerSettings.IsContentPaneInTabGroup="True"
+             ncal:XamDockManagerSettings.IsContentPaneInDocumentContentHost="False"
              ncal:XamDockManagerSettings.SplitPaneName="{x:Static inf:SplitPanes.RightSidePaneName}"
              ncal:XamDockManagerSettings.SplitPaneProxyStyle="{Binding Source={x:Static inf:SplitPanes.Styles}, Path=RightSidePane}">
 
