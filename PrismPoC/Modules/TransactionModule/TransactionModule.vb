@@ -18,11 +18,8 @@ Public Class TransactionModule
             Return
         End If
 
-        'Dim view As New TransactionView()
-        'region.Add(view)
-
-        'Dim view2 As New TransactionView()
-        'region.Add(view2)
+        Dim view As New TransactionView()
+        region.Add(view)
 
     End Sub
 
