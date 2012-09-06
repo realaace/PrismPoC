@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Infragistics.Composite.Wpf.Proxies.Properties;
 using Infragistics.Windows.DockManager;
+using System.Windows.Markup;
 
 using IGDock = Infragistics.Windows.DockManager;
 
@@ -113,7 +114,26 @@ namespace Infragistics.Composite.Wpf.Proxies.Docking
             if (contentPaneProxy == null)
                 throw new ArgumentNullException("contentPaneProxy");
 
-            _xamDockManager.AddDocument(contentPaneProxy.Header, contentPaneProxy.ContentPane.Content);
+            // YCL - .NET Framework 4.0 bug?
+            // Need to disassociate view from ContentPane. Otherwise, when adding view to DocumentContentHost
+            // will cause the error: Specified element is already the logical child of another element. Disconnect it first.
+
+
+            //----------------- Original Code. Works on .NET Framework 4.5 -------------------
+            //  _xamDockManager.AddDocument(contentPaneProxy.Header, contentPaneProxy.ContentPane.Content);
+            //----------------- End Original Code --------------------------------------------
+
+
+            //----------------- New Code. Works on .NET Framework 4.0 and 4.5-----------------
+
+            DependencyObject depObj = contentPaneProxy.ContentPane.Content as DependencyObject;
+            ContentPane cp = LogicalTreeHelper.GetParent(depObj) as ContentPane;
+            if (cp != null)
+                cp.Content = null;
+            
+            _xamDockManager.AddDocument(contentPaneProxy.Header, depObj);
+
+            //----------------- End New Code -------------------------------------------------
 
         }
         #endregion // Methods
