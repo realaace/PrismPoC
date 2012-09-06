@@ -17,7 +17,9 @@
             <MenuItem Header="_View">
                 <MenuItem Header="_Copy" />
             </MenuItem>
-            <MenuItem Header="_Tools">
+            <MenuItem Header="_Tools" Name="MITools">
+                <MenuItem Name="MISaveLayout" Header="_Save Layout" Click="SaveLayout_Click" />
+                <MenuItem Name="MILoadLayout" Header="_Load Layout" Click="LoadLayout_Click" />
                 <MenuItem Header="_Options" />
             </MenuItem>
         </Menu>

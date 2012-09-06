@@ -98,6 +98,7 @@
     <Compile Include="TransactionView.xaml.vb">
       <DependentUpon>TransactionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TransactionViewModel.vb" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>

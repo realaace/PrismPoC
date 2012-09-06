@@ -6,6 +6,14 @@
     xmlns:inf="clr-namespace:PrismPOC.Infrastructure;assembly=PrismPOC.Infrastructure"
     Title="Shell" Height="480" Width="640">
     <Grid>
+        <Grid.LayoutTransform>
+            <ScaleTransform x:Name="ApplicationScaleTransform"
+                        CenterX="0"
+                        CenterY="0"
+                        ScaleX="{Binding ElementName=ZoomSlider,Path=Value}"
+                        ScaleY="{Binding ElementName=ZoomSlider,Path=Value}" />
+        </Grid.LayoutTransform>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -18,11 +26,9 @@
         <!--<ContentControl Grid.Row="2" Name="XamDockManagerRegion" prism:RegionManager.RegionName="XamDockManagerRegion" />-->
         <igDock:XamDockManager Grid.Row="2" x:Name="DockRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.DockingAreaRegion}" Theme="Office2k7Black">
             <igDock:DocumentContentHost Background="DarkGray">
-                <igDock:SplitPane x:Name="mainSplitPane">
-                </igDock:SplitPane>
             </igDock:DocumentContentHost>
         </igDock:XamDockManager>
 
-        <StatusBar Grid.Row="3"><Slider x:Name="ZoomSlider" Height="25"  Width="100" Maximum="2" TickFrequency="0.4" TickPlacement="BottomRight" LargeChange="0.4" /></StatusBar>
+        <StatusBar Grid.Row="3"><Slider x:Name="ZoomSlider" Height="20"  Width="100" Minimum="1" Maximum="2" TickFrequency="0.2" TickPlacement="BottomRight" LargeChange="0.4" /></StatusBar>
     </Grid>
 </Window>

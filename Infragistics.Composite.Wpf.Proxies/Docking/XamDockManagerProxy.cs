@@ -130,8 +130,11 @@ namespace Infragistics.Composite.Wpf.Proxies.Docking
             ContentPane cp = LogicalTreeHelper.GetParent(depObj) as ContentPane;
             if (cp != null)
                 cp.Content = null;
-            
-            _xamDockManager.AddDocument(contentPaneProxy.Header, depObj);
+
+            ContentPane newCP;
+            newCP = _xamDockManager.AddDocument(contentPaneProxy.Header, depObj);
+            newCP.Name = contentPaneProxy.ContentPane.Name;
+            //newCP.AllowClose = false;
 
             //----------------- End New Code -------------------------------------------------
 

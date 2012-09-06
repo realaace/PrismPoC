@@ -30,9 +30,10 @@ namespace Infragistics.Composite.Wpf.Proxies.Docking
         /// Initializes a new object.
         /// </summary>
         /// <param name="content">The content of the ContentPane.</param>
-        public ContentPaneProxy(object content)
+        public ContentPaneProxy(object content, string name)
         {
             _contentPane = new ContentPane();
+            _contentPane.Name = name;
             _contentPane.Content = content;
             ContentPaneProxy.SetAssociatedProxy(_contentPane, this);
 

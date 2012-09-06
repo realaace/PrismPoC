@@ -10,6 +10,7 @@
              ncal:XamDockManagerSettings.IsContentPaneInTabGroup="True"
              ncal:XamDockManagerSettings.IsContentPaneInDocumentContentHost="True"
              ncal:XamDockManagerSettings.SplitPaneName="mainSplitPane"
+             ncal:XamDockManagerSettings.ContentPaneName="Transactions"
              ncal:XamDockManagerSettings.SplitPaneProxyStyle="{Binding Source={x:Static inf:SplitPanes.Styles}, Path=LeftSidePane}">
 
     <ncal:XamDockManagerSettings.ContentPaneProxyStyle>

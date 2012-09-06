@@ -202,5 +202,27 @@ namespace Infragistics.Composite.Wpf.Docking
             new UIPropertyMetadata(String.Empty));
 
         #endregion // SplitPaneName
+
+        #region ContentPaneName
+
+        public static string GetContentPaneName(DependencyObject obj)
+        {
+            return (string)obj.GetValue(ContentPaneNameProperty);
+        }
+
+        public static void SetContentPaneName(DependencyObject obj, string value)
+        {
+            obj.SetValue(ContentPaneNameProperty, value);
+        }
+
+        public static readonly DependencyProperty ContentPaneNameProperty =
+            DependencyProperty.RegisterAttached(
+            "ContentPaneName",
+            typeof(string),
+            typeof(XamDockManagerSettings),
+            new UIPropertyMetadata(String.Empty));
+
+        #endregion // ContentPaneName
+
     }
 }

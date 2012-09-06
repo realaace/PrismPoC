@@ -74,20 +74,15 @@ namespace Infragistics.Composite.Wpf.Docking
             if (!this.HasDockManagerProxy)
                 throw new InvalidOperationException(Strings.Docking_Exception_Uninitialized);
 
+            DependencyObject depObj = view as DependencyObject;
+            
             // CONTENT PANE
-            ContentPaneProxy contentPaneProxy = new ContentPaneProxy(view);
+            string contentPaneName = depObj == null ? String.Empty : XamDockManagerSettings.GetContentPaneName(depObj);
+            ContentPaneProxy contentPaneProxy = new ContentPaneProxy(view, contentPaneName);
             contentPaneProxy.Closed += this.OnContentPaneClosed;
             this.ApplyContentPaneStyle(view, contentPaneProxy);
 
-            // SPLIT PANE
-            DependencyObject depObj = view as DependencyObject;
-            string splitPaneName = depObj == null ? String.Empty : XamDockManagerSettings.GetSplitPaneName(depObj);
             XamDockManagerProxy dockManagerProxy = this.DockManagerProxy;
-            SplitPaneProxy splitPaneProxy = dockManagerProxy.GetSplitPaneProxyByName(splitPaneName);
-            this.ApplySplitPaneStyle(view, splitPaneProxy);
-            // We must delay adding the SplitPane to the element tree so that the 
-            // attached InitialLocation property can be set first, via a Style.
-            dockManagerProxy.AddSplitPaneToElementTree(splitPaneProxy);
 
             // YCL - Added support to add view to the DocumentContentHost
             bool isInDocumentContentHost = this.ShouldAddViewToDocumentContentHost(view);
@@ -97,6 +92,14 @@ namespace Infragistics.Composite.Wpf.Docking
             }
             else
             {
+                // SPLIT PANE
+                string splitPaneName = depObj == null ? String.Empty : XamDockManagerSettings.GetSplitPaneName(depObj);
+                SplitPaneProxy splitPaneProxy = dockManagerProxy.GetSplitPaneProxyByName(splitPaneName);
+                this.ApplySplitPaneStyle(view, splitPaneProxy);
+                // We must delay adding the SplitPane to the element tree so that the 
+                // attached InitialLocation property can be set first, via a Style.
+                dockManagerProxy.AddSplitPaneToElementTree(splitPaneProxy);
+
                 // ADD VIEW TO DOCKMANAGER
                 bool isInTabGroup = this.ShouldAddViewToTabPaneGroup(view);
                 splitPaneProxy.AddContentPaneProxy(contentPaneProxy, isInTabGroup);            

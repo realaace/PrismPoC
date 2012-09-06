@@ -16,6 +16,7 @@ Public Class MenuModule
 
     Public Sub Initialize() Implements Microsoft.Practices.Prism.Modularity.IModule.Initialize
 
+        _container.RegisterType(Of MenuView)()
         Dim region As IRegion = _regionManager.Regions("MenuRegion")
         region.Add(_container.Resolve(Of MenuView))
 
