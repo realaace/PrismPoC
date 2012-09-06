@@ -186,10 +186,6 @@
       <Project>{90DBF79E-6003-4248-ADA3-1A42D26389FE}</Project>
       <Name>TransactionModule</Name>
     </ProjectReference>
-    <ProjectReference Include="Modules\XamDockManagerModule\XamDockManagerModule.vbproj">
-      <Project>{CCFD52A3-21C6-4D88-9AE6-B1891FFBF88D}</Project>
-      <Name>XamDockManagerModule</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
