@@ -1,5 +1,5 @@
 ﻿Imports Microsoft.Practices.Prism.Events
-Public Class FacebookButtonEvent
+Public Class TransactionButtonEvent
     Inherits CompositePresentationEvent(Of String)
 End Class
 

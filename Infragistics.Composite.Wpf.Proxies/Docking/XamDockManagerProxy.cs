@@ -134,7 +134,6 @@ namespace Infragistics.Composite.Wpf.Proxies.Docking
             ContentPane newCP;
             newCP = _xamDockManager.AddDocument(contentPaneProxy.Header, depObj);
             newCP.Name = contentPaneProxy.ContentPane.Name;
-            //newCP.AllowClose = false;
 
             //----------------- End New Code -------------------------------------------------
 

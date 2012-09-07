@@ -6,33 +6,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <ToolBarTray Background="Gray" Height="35">
-            <ToolBar Band="1" BandIndex="1">
-                <Button Command="{Binding FacebookCommand}">
-                    <Image Source="/ToolbarModule;component/free_social_icons/icons/facebook.png" Stretch="Uniform" MaxHeight="30" />
+        <ToolBarTray>
+            <ToolBar ToolBarTray.IsLocked="True">
+                <Button Command="{Binding AddViewCommand}"  CommandParameter="Transaction" BorderThickness="1">
+                        <TextBlock>Transaction</TextBlock>
                 </Button>
-                <Button>
-                    <Image Source="/ToolbarModule;component/free_social_icons/icons/Google.png" MaxHeight="30" />
-                </Button>
-                <Button>
-                    <Image Source="/ToolbarModule;component/free_social_icons/icons/Rss.png" MaxHeight="30" />
-                </Button>
-            </ToolBar>
-            <ToolBar Band="1" BandIndex="2">
-                <Button>
-                    <Image Source="/ToolbarModule;component/free_social_icons/icons/Skype.png" MaxHeight="30" />
-                </Button>
-                <Button>
-                    <Image Source="/ToolbarModule;component/free_social_icons/icons/Twitter.png" MaxHeight="30" />
-                </Button>
-            </ToolBar>
-            <ToolBar Band="1" BandIndex="3">
-                <Button>
-                    <Image Source="/ToolbarModule;component/free_social_icons/icons/Yahoo.png" MaxHeight="30" />
-                </Button>
-                <Separator/>
-                <Button>
-                    <Image Source="/ToolbarModule;component/free_social_icons/icons/YouTube.png" MaxHeight="30" />
+                <Button Command="{Binding AddViewCommand}" CommandParameter="SavedQuery" BorderThickness="1">
+                    <TextBlock>Saved Query</TextBlock>
                 </Button>
             </ToolBar>
         </ToolBarTray>

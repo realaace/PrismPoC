@@ -53,36 +53,15 @@ Public Class Shell
 
         Select Case cpName
             Case "Transactions"
-                'e.NewPane.Content = New TransactionModule.TransactionView()
                 e.NewPane.Content = _container.Resolve(Of TransactionModule.TransactionView)()
+                e.NewPane.Header = "Transactions"
             Case "SavedQueries"
                 e.NewPane.Content = _container.Resolve(Of SavedQueryModule.SavedQueryView)()
                 e.NewPane.Header = "Saved Queries"
-                'e.NewPane.Content = New SavedQueryModule.SavedQueryView()
         End Select
     End Sub
 
-    'Private Sub DockRegion_LayoutUpdated(sender As Object, e As System.EventArgs) Handles DockRegion.LayoutUpdated
-    '    Dim panes As IEnumerable(Of ContentPane)
-    '    panes = DockRegion.GetPanes(PaneNavigationOrder.VisibleOrder)
-    '    For Each cp As ContentPane In panes
-    '        If cp.Name.LastIndexOf("_") < 0 Then
-    '            If paneNames.ContainsKey(cp.Name) Then
-    '                Dim i As Integer = paneNames.Item(cp.Name)
-    '                i = i + 1
-    '                paneNames(cp.Name) = i
-    '                cp.Name = cp.Name + "_" + i.ToString()
-    '            Else
-    '                paneNames.Add(cp.Name, 1)
-    '                cp.Name = cp.Name + "_1"
-    '            End If
-    '        End If
-    '        'MessageBox.Show(cp.Name)
-    '    Next
-    'End Sub
-
     Private Sub RenumberPanes()
-        'Dim paneNames As New Dictionary(Of String, Integer)
         Dim panes As IEnumerable(Of ContentPane)
         panes = DockRegion.GetPanes(PaneNavigationOrder.ActivationOrder)
 
@@ -103,7 +82,6 @@ Public Class Shell
                 cp.Name = cpName + "_1"
             End If
         Next
-
     End Sub
 
 End Class

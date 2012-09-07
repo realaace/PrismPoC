@@ -7,20 +7,20 @@ Public Class ToolbarViewModel
     Private _eventAggregator As IEventAggregator
 
     Public Property View As ToolbarView
-    Public Property FacebookCommand As DelegateCommand
+    Public Property AddViewCommand As DelegateCommand(Of String)
 
     Public Sub New(ByVal tbview As ToolbarView, ByVal eventAggregator As IEventAggregator)
         View = tbview
         View.ViewModel = Me
         _eventAggregator = eventAggregator
-        FacebookCommand = New DelegateCommand(AddressOf Me.RunFacebook, AddressOf Me.CanRunFacebook)
+        AddViewCommand = New DelegateCommand(Of String)(AddressOf Me.AddView, AddressOf Me.CanAddView)
     End Sub
 
-    Private Sub RunFacebook()
-        _eventAggregator.GetEvent(Of FacebookButtonEvent)().Publish("Sorry, blocked by Invesco.")
+    Private Sub AddView(viewType As String)
+        _eventAggregator.GetEvent(Of TransactionButtonEvent)().Publish(viewType)
     End Sub
 
-    Private Function CanRunFacebook() As Boolean
+    Private Function CanAddView() As Boolean
         Return True
     End Function
 

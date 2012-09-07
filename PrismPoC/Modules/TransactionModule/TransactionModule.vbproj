@@ -8,7 +8,8 @@
     <AssemblyName>TransactionModule</AssemblyName>
     <OutputType>Library</OutputType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <MyType>Custom</MyType>
     <ProjectGuid>{90DBF79E-6003-4248-ADA3-1A42D26389FE}</ProjectGuid>
   </PropertyGroup>

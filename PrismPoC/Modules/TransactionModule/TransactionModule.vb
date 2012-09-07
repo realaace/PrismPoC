@@ -12,7 +12,7 @@ Public Class TransactionModule
         _eventAggregator = eventAggregator
         _regionManager = regionManager
         'TODO: Move event handler (AddNewView) to an external class so module can be destroyed as intended by Prism.
-        _eventAggregator.GetEvent(Of FacebookButtonEvent)().Subscribe(AddressOf AddNewView, True)
+        _eventAggregator.GetEvent(Of TransactionButtonEvent)().Subscribe(AddressOf AddNewView, True)
     End Sub
 
 #Region "IModule Members"
@@ -38,13 +38,15 @@ Public Class TransactionModule
 #End Region
 
     Private Sub AddNewView(ByVal name As String)
-        Dim region As IRegion = _regionManager.Regions(RegionNames.DockingAreaRegion)
-        If region Is Nothing Then
-            Return
-        End If
+        If name = "Transaction" Then
+            Dim region As IRegion = _regionManager.Regions(RegionNames.DockingAreaRegion)
+            If region Is Nothing Then
+                Return
+            End If
 
-        Dim view As New TransactionView()
-        region.Add(view)
+            Dim view As New TransactionView()
+            region.Add(view)
+        End If
     End Sub
 
 End Class

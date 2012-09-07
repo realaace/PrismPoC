@@ -7,7 +7,6 @@ Public Class TransactionViewModel
     Private _eventAggregator As IEventAggregator
 
     Public Property View As TransactionView
-    Public Property FacebookCommand As DelegateCommand
 
     Public Sub New(ByVal tbview As TransactionView, ByVal eventAggregator As IEventAggregator)
         View = tbview
