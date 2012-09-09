@@ -171,6 +171,10 @@
       <Project>{4DEB0A38-A29E-44FF-AD90-7383A276894C}</Project>
       <Name>PrismPOC.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PropertyGrid\PropertyGrid.vbproj">
+      <Project>{971a52ee-607d-41d3-bde5-812c207b3acf}</Project>
+      <Name>PropertyGrid</Name>
+    </ProjectReference>
     <ProjectReference Include="Modules\MenuModule\MenuModule.vbproj">
       <Project>{ADAD093F-9330-4F6D-BBF9-F9D3AFD9EB48}</Project>
       <Name>MenuModule</Name>

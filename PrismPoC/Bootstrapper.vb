@@ -29,7 +29,7 @@ Public Class Bootstrapper
         moduleCatalog.AddModule(GetType(ToolbarModule.ToolbarModule))
         moduleCatalog.AddModule(GetType(TransactionModule.TransactionModule))
         moduleCatalog.AddModule(GetType(SavedQueryModule.SavedQueryModule))
-        'moduleCatalog.AddModule(GetType(XamDockManagerModule.XamDockManagerModule))
+        moduleCatalog.AddModule(GetType(PropertyGrid.PropertyGridModule))
     End Sub
 
     Protected Overrides Function ConfigureRegionAdapterMappings() As RegionAdapterMappings

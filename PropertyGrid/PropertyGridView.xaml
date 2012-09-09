@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="PropertyGridView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpg="clr-namespace:PropertyGrid"
+             xmlns:ncal="http://infragistics.com/ncal"
+             xmlns:inf="clr-namespace:PrismPOC.Infrastructure;assembly=PrismPOC.Infrastructure"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             ncal:XamDockManagerSettings.IsContentPaneInTabGroup="True"
+             ncal:XamDockManagerSettings.IsContentPaneInDocumentContentHost="False"
+             ncal:XamDockManagerSettings.ContentPaneName="SavedQueries"
+             ncal:XamDockManagerSettings.SplitPaneName="{x:Static inf:SplitPanes.BottomPaneName}"
+             ncal:XamDockManagerSettings.SplitPaneProxyStyle="{Binding Source={x:Static inf:SplitPanes.Styles}, Path=BottomPane}">
+
+    <ncal:XamDockManagerSettings.ContentPaneProxyStyle>
+        <Style TargetType="{x:Type ncal:ContentPaneProxy}">
+            <Setter Property="Header" Value="Properties" />
+        </Style>
+    </ncal:XamDockManagerSettings.ContentPaneProxyStyle>
+
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <wpg:WPFPropertyGrid x:Name="wpg1" />
+    </Grid>
+
+
+</UserControl>
