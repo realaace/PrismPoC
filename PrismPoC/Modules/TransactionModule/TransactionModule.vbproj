@@ -47,10 +47,16 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="infragisticswpf3.datapresenter.v12.1, Version=12.1.20121.2107, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="InfragisticsWPF3.Editors.v12.1, Version=12.1.20121.2107, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="InfragisticsWPF3.v12.1, Version=12.1.20121.2107, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System" />
@@ -59,6 +65,8 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -112,6 +120,10 @@
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BLL\BLL.vbproj">
+      <Project>{21b81a9b-dda0-42c1-a421-1e293637d9e4}</Project>
+      <Name>BLL %28BLL\BLL%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Infragistics.Composite.Wpf.Proxies\Infragistics.Composite.Wpf.Proxies.csproj">
       <Project>{BBD5D04E-268A-4B7E-83BD-0E28506899CD}</Project>
       <Name>Infragistics.Composite.Wpf.Proxies</Name>

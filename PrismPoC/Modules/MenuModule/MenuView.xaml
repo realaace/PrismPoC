@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Menu Height="20">
+        <Menu>
             <MenuItem Header="_File">
                 <MenuItem Command="New" />
                 <MenuItem Command="Open" />
@@ -27,7 +27,7 @@
                 <MenuItem Command="SelectAll" />
             </MenuItem>
             <MenuItem Header="_View">
-                <MenuItem Header="_Copy" />
+                <MenuItem Header="_Test" />
             </MenuItem>
             <MenuItem Header="_Tools" Name="MITools">
                 <MenuItem Name="MISaveLayout" Header="_Save Layout" Click="SaveLayout_Click" />

@@ -2,13 +2,17 @@
 Imports Microsoft.Practices.Prism.Modularity
 Imports Microsoft.Practices.Prism.Regions
 Imports Microsoft.Practices.Prism.Events
+Imports Microsoft.Practices.Unity
 
 Public Class TransactionModule
     Implements IModule
     ReadOnly _regionManager As IRegionManager
     Private _eventAggregator As IEventAggregator
+    Private _container As IUnityContainer
 
-    Public Sub New(regionManager As IRegionManager, eventAggregator As IEventAggregator)
+
+    Public Sub New(container As IUnityContainer, regionManager As IRegionManager, eventAggregator As IEventAggregator)
+        _container = container
         _eventAggregator = eventAggregator
         _regionManager = regionManager
         'TODO: Move event handler (AddNewView) to an external class so module can be destroyed as intended by Prism.
@@ -19,19 +23,25 @@ Public Class TransactionModule
 
     Public Sub Initialize() Implements IModule.Initialize
 
+        _container.RegisterType(Of TransactionViewModel)()
+        _container.RegisterType(Of TransactionView)()
+
         Dim region As IRegion = _regionManager.Regions(RegionNames.DockingAreaRegion)
         If region Is Nothing Then
             Return
         End If
 
-        Dim view As New TransactionView()
+        Dim view As TransactionView = _container.Resolve(Of TransactionView)()
         region.Add(view)
 
-        Dim view2 As New TransactionView()
-        region.Add(view2)
+        'Dim view As New TransactionView()
+        'region.Add(view)
 
-        Dim view3 As New TransactionView()
-        region.Add(view3)
+        'Dim view2 As New TransactionView()
+        'region.Add(view2)
+
+        'Dim view3 As New TransactionView()
+        'region.Add(view3)
 
     End Sub
 
@@ -44,7 +54,7 @@ Public Class TransactionModule
                 Return
             End If
 
-            Dim view As New TransactionView()
+            Dim view As TransactionView = _container.Resolve(Of TransactionView)()
             region.Add(view)
         End If
     End Sub
