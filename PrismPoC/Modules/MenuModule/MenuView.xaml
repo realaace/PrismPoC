@@ -8,11 +8,23 @@
     <Grid>
         <Menu Height="20">
             <MenuItem Header="_File">
-                <MenuItem Header="_New" />
-                <MenuItem Header="_Open" />
+                <MenuItem Command="New" />
+                <MenuItem Command="Open" />
+                <MenuItem Command="Save" />
+                <MenuItem Command="SaveAs" Header="Save As..."/>
+                <Separator />
+                <MenuItem Command="{Binding ExitCommand}" Header="E_xit" InputGestureText="Alt+F4"/>
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Header="_Copy" />
+                <MenuItem Command="Undo" />
+                <MenuItem Command="Redo" />
+                <Separator />
+                <MenuItem Command="Cut" />
+                <MenuItem Command="Copy" />
+                <MenuItem Command="Paste" />
+                <MenuItem Command="Delete" />
+                <Separator />
+                <MenuItem Command="SelectAll" />
             </MenuItem>
             <MenuItem Header="_View">
                 <MenuItem Header="_Copy" />

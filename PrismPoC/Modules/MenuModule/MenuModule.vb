@@ -1,6 +1,7 @@
 ﻿Imports Microsoft.Practices.Prism.Modularity
 Imports Microsoft.Practices.Unity
 Imports Microsoft.Practices.Prism.Regions
+Imports PrismPOC.Infrastructure
 
 Public Class MenuModule
     Implements IModule
@@ -16,6 +17,7 @@ Public Class MenuModule
 
     Public Sub Initialize() Implements Microsoft.Practices.Prism.Modularity.IModule.Initialize
 
+        _container.RegisterType(Of IViewModel, MenuViewViewModel)()
         _container.RegisterType(Of MenuView)()
         Dim region As IRegion = _regionManager.Regions("MenuRegion")
         region.Add(_container.Resolve(Of MenuView))

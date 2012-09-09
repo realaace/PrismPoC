@@ -20,6 +20,7 @@ Public Class Shell
         _eventAggregator = eventAggregator
         _eventAggregator.GetEvent(Of SaveLayoutEvent)().Subscribe(AddressOf SaveLayout)
         _eventAggregator.GetEvent(Of LoadLayoutEvent)().Subscribe(AddressOf LoadLayout)
+        _eventAggregator.GetEvent(Of ExitAppEvent)().Subscribe(AddressOf ExitApp)
 
     End Sub
 
@@ -82,6 +83,10 @@ Public Class Shell
                 cp.Name = cpName + "_1"
             End If
         Next
+    End Sub
+
+    Private Sub ExitApp()
+        Me.Close()
     End Sub
 
 End Class

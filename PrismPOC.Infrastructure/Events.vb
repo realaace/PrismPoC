@@ -10,3 +10,7 @@ End Class
 Public Class LoadLayoutEvent
     Inherits CompositePresentationEvent(Of String)
 End Class
+
+Public Class ExitAppEvent
+    Inherits CompositePresentationEvent(Of String)
+End Class

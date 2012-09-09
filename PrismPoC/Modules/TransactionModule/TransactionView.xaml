@@ -18,5 +18,8 @@
             <Setter Property="Header" Value="Transactions" />
         </Style>
     </ncal:XamDockManagerSettings.ContentPaneProxyStyle>
+    <StackPanel>
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="Transaction View" />
+        <TextBox Name="txtName" />
+    </StackPanel>
 </UserControl>

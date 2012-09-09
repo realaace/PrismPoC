@@ -88,6 +88,7 @@
     <Compile Include="MenuView.xaml.vb">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MenuViewViewModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb">
       <SubType>Code</SubType>
     </Compile>
