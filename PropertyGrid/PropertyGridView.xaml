@@ -10,7 +10,7 @@
              d:DesignHeight="300" d:DesignWidth="300"
              ncal:XamDockManagerSettings.IsContentPaneInTabGroup="True"
              ncal:XamDockManagerSettings.IsContentPaneInDocumentContentHost="False"
-             ncal:XamDockManagerSettings.ContentPaneName="SavedQueries"
+             ncal:XamDockManagerSettings.ContentPaneName="PropertyGrid"
              ncal:XamDockManagerSettings.SplitPaneName="{x:Static inf:SplitPanes.BottomPaneName}"
              ncal:XamDockManagerSettings.SplitPaneProxyStyle="{Binding Source={x:Static inf:SplitPanes.Styles}, Path=BottomPane}">
 

@@ -59,6 +59,9 @@ Public Class Shell
             Case "SavedQueries"
                 e.NewPane.Content = _container.Resolve(Of SavedQueryModule.SavedQueryView)()
                 e.NewPane.Header = "Saved Queries"
+            Case "PropertyGrid"
+                e.NewPane.Content = _container.Resolve(Of PropertyGrid.PropertyGridView)()
+                e.NewPane.Header = "Properties"
         End Select
     End Sub
 
