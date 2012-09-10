@@ -31,7 +31,8 @@ Partial Public Class TransactionView
     End Sub
 
     Private Sub xdgTransactions_MouseDoubleClick_1(sender As Object, e As MouseButtonEventArgs)
-        MessageBox.Show(String.Format("Double clicked on {0}", sender.ToString))
+        'MessageBox.Show(String.Format("Double clicked on {0}", sender.ToString))
+        _viewModel.CreateAndLoadProperty()
     End Sub
 
     Private Sub xdgTransactions_RecordActivated(sender As Object, e As Infragistics.Windows.DataPresenter.Events.RecordActivatedEventArgs) Handles xdgTransactions.RecordActivated

@@ -17,10 +17,7 @@ Public Class TransactionViewModel
         Set(value As Transaction)
             _selectedTransaction = value
             OnPropertyChanged("SelectedTransaction")
-            Dim selected(1) As Object
-            selected(0) = Me.GetHashCode()
-            selected(1) = _selectedTransaction
-            _eventAggregator.GetEvent(Of SelectedItemChangedEvent)().Publish(selected)
+            LoadTransaction(False)
         End Set
     End Property
 
@@ -36,6 +33,19 @@ Public Class TransactionViewModel
     Public Sub New(ByVal eventAggregator As IEventAggregator)
         _eventAggregator = eventAggregator
         _transactions = Transaction.GetTransactions()
+        _eventAggregator.GetEvent(Of ViewCreatedEvent)().Subscribe(AddressOf LoadTransaction)
+
     End Sub
 
+    Public Sub CreateAndLoadProperty()
+        LoadTransaction(True)
+    End Sub
+
+    Private Sub LoadTransaction(createNewView As Boolean)
+        Dim selected(2) As Object
+        selected(0) = Me.GetHashCode()
+        selected(1) = _selectedTransaction
+        selected(2) = createNewView
+        _eventAggregator.GetEvent(Of SelectedItemChangedEvent)().Publish(selected)
+    End Sub
 End Class

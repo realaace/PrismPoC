@@ -34,15 +34,6 @@ Public Class TransactionModule
         Dim view As TransactionView = _container.Resolve(Of TransactionView)()
         region.Add(view)
 
-        'Dim view As New TransactionView()
-        'region.Add(view)
-
-        'Dim view2 As New TransactionView()
-        'region.Add(view2)
-
-        'Dim view3 As New TransactionView()
-        'region.Add(view3)
-
     End Sub
 
 #End Region

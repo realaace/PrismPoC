@@ -18,3 +18,11 @@ End Class
 Public Class SelectedItemChangedEvent
     Inherits CompositePresentationEvent(Of Object)
 End Class
+
+Public Class CreateViewEvent
+    Inherits CompositePresentationEvent(Of String)
+End Class
+
+Public Class ViewCreatedEvent
+    Inherits CompositePresentationEvent(Of String)
+End Class

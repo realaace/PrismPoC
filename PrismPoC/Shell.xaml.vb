@@ -1,4 +1,5 @@
 ﻿Imports Microsoft.Practices.Prism.Events
+Imports Microsoft.Practices.Prism.Regions
 Imports PrismPoC.Infrastructure
 Imports Infragistics.Windows.DockManager
 Imports System.IO
@@ -7,21 +8,24 @@ Imports Microsoft.Practices.Unity
 Public Class Shell
     Private _eventAggregator As IEventAggregator
     Private _container As IUnityContainer
+    Private _regionManager As IRegionManager
     Private Shared paneNames As Dictionary(Of String, Integer)
 
 
-    Public Sub New(container As IUnityContainer, eventAggregator As IEventAggregator)
+    Public Sub New(container As IUnityContainer, regionManager As IRegionManager, eventAggregator As IEventAggregator)
         InitializeComponent()
         If IsNothing(paneNames) Then
             paneNames = New Dictionary(Of String, Integer)
         End If
 
         _container = container
+        _regionManager = regionManager
         _eventAggregator = eventAggregator
         _eventAggregator.GetEvent(Of SaveLayoutEvent)().Subscribe(AddressOf SaveLayout)
         _eventAggregator.GetEvent(Of LoadLayoutEvent)().Subscribe(AddressOf LoadLayout)
         _eventAggregator.GetEvent(Of ExitAppEvent)().Subscribe(AddressOf ExitApp)
         _eventAggregator.GetEvent(Of SelectedItemChangedEvent)().Subscribe(AddressOf LoadSelectedItem)
+        _eventAggregator.GetEvent(Of CreateViewEvent)().Subscribe(AddressOf CreateView)
 
 
     End Sub
@@ -98,7 +102,8 @@ Public Class Shell
         Dim panes As IEnumerable(Of ContentPane)
         panes = DockRegion.GetPanes(PaneNavigationOrder.ActivationOrder)
 
-        paneNames.Clear()
+        Dim found As Boolean = False
+
         For Each cp As ContentPane In panes
             Dim cpName As String = cp.Name
             If cpName.Contains("PropertyGrid") Then
@@ -106,15 +111,58 @@ Public Class Shell
                 pgvm = cp.Content.ViewModel
                 If pgvm.ParentHashCode = selectedItem(0) Then
                     pgvm.SelectedObject = selectedItem(1)
+                    found = True
                     Exit For
                 ElseIf pgvm.ParentHashCode = 0 Then
                     pgvm.ParentHashCode = selectedItem(0)
                     pgvm.SelectedObject = selectedItem(1)
+                    found = True
                     Exit For
                 End If
             End If
-
         Next
+
+        If Not found And selectedItem(2) = True Then
+            _regionManager.Regions(RegionNames.DockingAreaRegion).Add(_container.Resolve(Of PropertyGrid.PropertyGridView2)())
+            For Each cp As ContentPane In panes
+                Dim cpName As String = cp.Name
+                If cpName.Contains("PropertyGrid") Then
+                    Dim pgvm As PropertyGrid.PropertyGridViewModel
+                    pgvm = cp.Content.ViewModel
+                    If pgvm.ParentHashCode = 0 Then
+                        pgvm.ParentHashCode = selectedItem(0)
+                        pgvm.SelectedObject = selectedItem(1)
+                        Exit For
+                    End If
+                End If
+            Next
+
+        End If
+
+    End Sub
+
+    Private Sub CreateView(ByVal viewType As String)
+
+        Dim panes As IEnumerable(Of ContentPane)
+        panes = DockRegion.GetPanes(PaneNavigationOrder.ActivationOrder)
+        paneNames.Clear()
+
+        Dim found As Boolean = False
+        For Each cp As ContentPane In panes
+            Dim cpName As String = cp.Name
+            If cpName.Contains("PropertyGrid") Then
+                Dim pgvm As PropertyGrid.PropertyGridViewModel
+                pgvm = cp.Content.ViewModel
+                If pgvm.ParentHashCode = 0 Then
+                    found = True
+                    Exit For
+                End If
+            End If
+        Next
+        If Not found Then
+            _regionManager.Regions(RegionNames.DockingAreaRegion).Add(_container.Resolve(Of PropertyGrid.PropertyGridView2)())
+        End If
+        _eventAggregator.GetEvent(Of ViewCreatedEvent)().Publish("Property")
     End Sub
 
 End Class
