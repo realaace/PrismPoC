@@ -23,16 +23,17 @@ Public Class PropertyGridModule
 
         _container.RegisterType(Of PropertyGridViewModel)()
         _container.RegisterType(Of PropertyGridView)()
+        _container.RegisterType(Of PropertyGridView2)()
 
         Dim region As IRegion = _regionManager.Regions(RegionNames.DockingAreaRegion)
         If region Is Nothing Then
             Return
         End If
 
-        Dim view As PropertyGridView = _container.Resolve(Of PropertyGridView)()
+        Dim view As PropertyGridView2 = _container.Resolve(Of PropertyGridView2)()
         region.Add(view)
 
-        Dim view2 As PropertyGridView = _container.Resolve(Of PropertyGridView)()
+        Dim view2 As PropertyGridView2 = _container.Resolve(Of PropertyGridView2)()
         region.Add(view2)
 
     End Sub

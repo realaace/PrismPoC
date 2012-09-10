@@ -63,6 +63,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>..\..\Extended WPF Toolkit\Main\Source\ExtendedWPFToolkitSolution\Src\WPFToolkit.Extended\bin\Debug\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="System.Linq" />
@@ -100,6 +103,9 @@
     <Compile Include="PropertyGridView.xaml.vb">
       <DependentUpon>PropertyGridView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PropertyGridView2.xaml.vb">
+      <DependentUpon>PropertyGridView2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PropertyGridViewModel.vb" />
     <Compile Include="WPFPropertyGrid.vb" />
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -115,6 +121,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="PropertyGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PropertyGridView2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
