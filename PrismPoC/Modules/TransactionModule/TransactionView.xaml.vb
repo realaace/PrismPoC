@@ -30,11 +30,15 @@ Partial Public Class TransactionView
         Me.DataContext = _viewModel
     End Sub
 
-    Private Sub xdgTransactions_SelectedItemsChanged_1(sender As Object, e As Infragistics.Windows.DataPresenter.Events.SelectedItemsChangedEventArgs)
-
-    End Sub
-
     Private Sub xdgTransactions_MouseDoubleClick_1(sender As Object, e As MouseButtonEventArgs)
         MessageBox.Show(String.Format("Double clicked on {0}", sender.ToString))
     End Sub
+
+    Private Sub xdgTransactions_RecordActivated(sender As Object, e As Infragistics.Windows.DataPresenter.Events.RecordActivatedEventArgs) Handles xdgTransactions.RecordActivated
+        Dim selectedRecord As Infragistics.Windows.DataPresenter.DataRecord
+        selectedRecord = DirectCast(e.Record, Infragistics.Windows.DataPresenter.DataRecord)
+        _viewModel.SelectedTransaction = selectedRecord.DataItem
+
+    End Sub
+
 End Class

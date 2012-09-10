@@ -22,7 +22,7 @@
 
 
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <wpg:WPFPropertyGrid x:Name="wpg1" />
+        <wpg:WPFPropertyGrid x:Name="wpg1" SelectedObject="{Binding SelectedObject}"/>
     </Grid>
 
 

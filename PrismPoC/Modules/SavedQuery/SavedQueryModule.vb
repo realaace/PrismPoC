@@ -39,11 +39,6 @@ Public Class SavedQueryModule
         Dim view As New SavedQueryView()
         region.Add(view)
 
-        Dim view2 As New SavedQueryView()
-        region.Add(view2)
-
-        Dim view3 As New SavedQueryView()
-        region.Add(view3)
     End Sub
 
 #End Region

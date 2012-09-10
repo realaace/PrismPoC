@@ -32,6 +32,9 @@ Public Class PropertyGridModule
         Dim view As PropertyGridView = _container.Resolve(Of PropertyGridView)()
         region.Add(view)
 
+        Dim view2 As PropertyGridView = _container.Resolve(Of PropertyGridView)()
+        region.Add(view2)
+
     End Sub
 
 #End Region

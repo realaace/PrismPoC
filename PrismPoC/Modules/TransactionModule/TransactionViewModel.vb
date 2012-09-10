@@ -8,8 +8,21 @@ Public Class TransactionViewModel
 
     Private _eventAggregator As IEventAggregator
     Private _transactions As List(Of Transaction)
+    Private _selectedTransaction As Transaction
 
     Public Property SelectedTransaction As Transaction
+        Get
+            Return _selectedTransaction
+        End Get
+        Set(value As Transaction)
+            _selectedTransaction = value
+            OnPropertyChanged("SelectedTransaction")
+            Dim selected(1) As Object
+            selected(0) = Me.GetHashCode()
+            selected(1) = _selectedTransaction
+            _eventAggregator.GetEvent(Of SelectedItemChangedEvent)().Publish(selected)
+        End Set
+    End Property
 
     Public Property Transactions As List(Of Transaction)
         Get

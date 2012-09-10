@@ -17,14 +17,11 @@
     </ncal:XamDockManagerSettings.ContentPaneProxyStyle>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="Transaction View" />
-        <TextBox Grid.Row="1"  x:Name="txtName" />
-        <igDP:XamDataGrid Grid.Row="2" Name="xdgTransactions" DataSource="{Binding Transactions}"
+        <igDP:XamDataGrid Grid.Row="0" Name="xdgTransactions" DataSource="{Binding Transactions}"
                           MouseDoubleClick="xdgTransactions_MouseDoubleClick_1" IsUndoEnabled="True">
 
             <igDP:XamDataGrid.FieldLayoutSettings>
@@ -34,5 +31,6 @@
 
         </igDP:XamDataGrid>
 
+        <Button Content="Save" Grid.Row="1" Width="100" HorizontalAlignment="Right" Margin="5"/>
     </Grid>
 </UserControl>

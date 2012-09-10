@@ -14,3 +14,7 @@ End Class
 Public Class ExitAppEvent
     Inherits CompositePresentationEvent(Of String)
 End Class
+
+Public Class SelectedItemChangedEvent
+    Inherits CompositePresentationEvent(Of Object)
+End Class

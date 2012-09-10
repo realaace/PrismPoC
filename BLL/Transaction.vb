@@ -1,44 +1,77 @@
-﻿Public Class Transaction
+﻿Imports System.ComponentModel
+
+Public Class Transaction
+    Implements INotifyPropertyChanged
 
 #Region "Fields"
 
+    Dim _id As Integer
     Dim _dealer As String
     Dim _branch As String
     Dim _rep As String
+    Dim _series As Integer
 
 #End Region 'Fields
 
+    Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
+
 #Region "Properties"
-
+    <Category("Id")> _
+    <DisplayName("ID")> _
+    <[ReadOnly](True)> _
+    <Browsable(True)> _
     Public Property Id As Integer
+        Get
+            Return _id
+        End Get
+        Set(value As Integer)
+            _id = value
+        End Set
+    End Property
 
+    <Category("DBRS")> _
     Public Property Dealer As String
         Get
             Return _dealer
         End Get
         Set(value As String)
             _dealer = value
+            OnPropertyChanged("Dealer")
         End Set
     End Property
 
+    <Category("DBRS")> _
     Public Property Branch As String
         Get
             Return _branch
         End Get
         Set(value As String)
             _branch = value
+            OnPropertyChanged("Branch")
         End Set
     End Property
+
+    <Category("DBRS")> _
     Public Property Rep As String
         Get
             Return _rep
         End Get
         Set(value As String)
             _rep = value
+            OnPropertyChanged("Rep")
         End Set
     End Property
 
+    <Category("DBRS")> _
     Public Property Series As Integer
+        Get
+            Return _series
+        End Get
+        Set(value As Integer)
+            _series = value
+            OnPropertyChanged("Series")
+        End Set
+    End Property
 
 #End Region
 
@@ -47,7 +80,7 @@
         _dealer = dealer
         _branch = branch
         _rep = rep
-        _Series = series
+        _series = series
 
     End Sub
 
@@ -62,5 +95,9 @@
 
         Return trans
     End Function
+
+    Protected Sub OnPropertyChanged(propertyName As String)
+        RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
+    End Sub
 
 End Class

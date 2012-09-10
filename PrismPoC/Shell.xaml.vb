@@ -21,6 +21,8 @@ Public Class Shell
         _eventAggregator.GetEvent(Of SaveLayoutEvent)().Subscribe(AddressOf SaveLayout)
         _eventAggregator.GetEvent(Of LoadLayoutEvent)().Subscribe(AddressOf LoadLayout)
         _eventAggregator.GetEvent(Of ExitAppEvent)().Subscribe(AddressOf ExitApp)
+        _eventAggregator.GetEvent(Of SelectedItemChangedEvent)().Subscribe(AddressOf LoadSelectedItem)
+
 
     End Sub
 
@@ -67,7 +69,7 @@ Public Class Shell
 
     Private Sub RenumberPanes()
         Dim panes As IEnumerable(Of ContentPane)
-        panes = DockRegion.GetPanes(PaneNavigationOrder.ActivationOrder)
+        panes = DockRegion.GetPanes(PaneNavigationOrder.VisibleOrder)
 
         paneNames.Clear()
         For Each cp As ContentPane In panes
@@ -90,6 +92,29 @@ Public Class Shell
 
     Private Sub ExitApp()
         Me.Close()
+    End Sub
+
+    Private Sub LoadSelectedItem(selectedItem As Object)
+        Dim panes As IEnumerable(Of ContentPane)
+        panes = DockRegion.GetPanes(PaneNavigationOrder.ActivationOrder)
+
+        paneNames.Clear()
+        For Each cp As ContentPane In panes
+            Dim cpName As String = cp.Name
+            If cpName.Contains("PropertyGrid") Then
+                Dim pgvm As PropertyGrid.PropertyGridViewModel
+                pgvm = cp.Content.ViewModel
+                If pgvm.ParentHashCode = selectedItem(0) Then
+                    pgvm.SelectedObject = selectedItem(1)
+                    Exit For
+                ElseIf pgvm.ParentHashCode = 0 Then
+                    pgvm.ParentHashCode = selectedItem(0)
+                    pgvm.SelectedObject = selectedItem(1)
+                    Exit For
+                End If
+            End If
+
+        Next
     End Sub
 
 End Class

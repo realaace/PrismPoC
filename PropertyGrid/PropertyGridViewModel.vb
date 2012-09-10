@@ -8,6 +8,7 @@ Public Class PropertyGridViewModel
 
     Private _eventAggregator As IEventAggregator
     Private _selectedObject As Object
+    Private _parentHashCode As Integer = 0
 
     Public Property SelectedObject As Object
         Get
@@ -15,6 +16,16 @@ Public Class PropertyGridViewModel
         End Get
         Set(value As Object)
             _selectedObject = value
+            OnPropertyChanged("SelectedObject")
+        End Set
+    End Property
+
+    Public Property ParentHashCode As Integer
+        Get
+            Return _parentHashCode
+        End Get
+        Set(value As Integer)
+            _parentHashCode = value
         End Set
     End Property
 

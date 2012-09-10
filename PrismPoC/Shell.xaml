@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:prism="http://www.codeplex.com/prism" 
     xmlns:inf="clr-namespace:PrismPOC.Infrastructure;assembly=PrismPOC.Infrastructure"
-    Title="Shell" Height="480" Width="640">
+    Title="Shell" Height="768" Width="1024">
     <Grid>
         <Grid.LayoutTransform>
             <ScaleTransform x:Name="ApplicationScaleTransform"
