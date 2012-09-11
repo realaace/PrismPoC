@@ -65,9 +65,15 @@ namespace Infragistics.Composite.Wpf.Proxies.Docking
             _contentPaneProxies.Add(contentPaneProxy);
 
             if (isInTabGroup)
+            {
                 this.TabGroupPaneProxy.AddContentPaneProxy(contentPaneProxy);
+                contentPaneProxy.ContentPane.Activate();
+            }
             else
+            {
                 this.SplitPane.Panes.Add(contentPaneProxy.ContentPane);
+                contentPaneProxy.ContentPane.Activate();
+            }
         }
 
         #endregion // Methods

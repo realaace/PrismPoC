@@ -24,7 +24,7 @@
         <ContentControl Grid.Row="0" Name="MenuRegion" prism:RegionManager.RegionName="MenuRegion" />
         <ContentControl Grid.Row="1" Name="ToolbarRegion" prism:RegionManager.RegionName="ToolbarRegion" />
         <!--<ContentControl Grid.Row="2" Name="XamDockManagerRegion" prism:RegionManager.RegionName="XamDockManagerRegion" />-->
-        <igDock:XamDockManager Grid.Row="2" x:Name="DockRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.DockingAreaRegion}" Theme="Office2k7Black">
+        <igDock:XamDockManager Grid.Row="2" x:Name="DockRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.DockingAreaRegion}" Theme="IGTheme">
             <igDock:DocumentContentHost Background="DarkGray">
             </igDock:DocumentContentHost>
         </igDock:XamDockManager>

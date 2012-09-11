@@ -66,7 +66,7 @@ Public Class Shell
                 e.NewPane.Content = _container.Resolve(Of SavedQueryModule.SavedQueryView)()
                 e.NewPane.Header = "Saved Queries"
             Case "PropertyGrid"
-                e.NewPane.Content = _container.Resolve(Of PropertyGrid.PropertyGridView)()
+                e.NewPane.Content = _container.Resolve(Of PropertyGrid.PropertyGridView2)()
                 e.NewPane.Header = "Properties"
         End Select
     End Sub
@@ -122,21 +122,12 @@ Public Class Shell
             End If
         Next
 
+        'If we need to create new view
         If Not found And selectedItem(2) = True Then
-            _regionManager.Regions(RegionNames.DockingAreaRegion).Add(_container.Resolve(Of PropertyGrid.PropertyGridView2)())
-            For Each cp As ContentPane In panes
-                Dim cpName As String = cp.Name
-                If cpName.Contains("PropertyGrid") Then
-                    Dim pgvm As PropertyGrid.PropertyGridViewModel
-                    pgvm = cp.Content.ViewModel
-                    If pgvm.ParentHashCode = 0 Then
-                        pgvm.ParentHashCode = selectedItem(0)
-                        pgvm.SelectedObject = selectedItem(1)
-                        Exit For
-                    End If
-                End If
-            Next
-
+            Dim pgv As PropertyGrid.PropertyGridView2 = _container.Resolve(Of PropertyGrid.PropertyGridView2)()
+            pgv.ViewModel.ParentHashCode = selectedItem(0)
+            pgv.ViewModel.SelectedObject = selectedItem(1)
+            _regionManager.Regions(RegionNames.DockingAreaRegion).Add(pgv)
         End If
 
     End Sub

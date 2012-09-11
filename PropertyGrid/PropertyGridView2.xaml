@@ -6,7 +6,7 @@
              xmlns:ncal="http://infragistics.com/ncal"
              xmlns:inf="clr-namespace:PrismPOC.Infrastructure;assembly=PrismPOC.Infrastructure"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             ncal:XamDockManagerSettings.IsContentPaneInTabGroup="True"
+             ncal:XamDockManagerSettings.IsContentPaneInTabGroup="False"
              ncal:XamDockManagerSettings.IsContentPaneInDocumentContentHost="False"
              ncal:XamDockManagerSettings.ContentPaneName="PropertyGrid"
              ncal:XamDockManagerSettings.SplitPaneName="{x:Static inf:SplitPanes.BottomPaneName}"
