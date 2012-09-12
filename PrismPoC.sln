@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2010
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PrismPoC", "PrismPoC\PrismPoC.vbproj", "{E2862E30-6503-48E4-A864-5948C4B44ACE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{3FAB93A0-13FD-4DF7-85ED-2EF6275B0892}"
@@ -24,6 +24,20 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BLL", "BLL\BLL.vbproj", "{21B81A9B-DDA0-42C1-A421-1E293637D9E4}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PropertyGrid", "PropertyGrid\PropertyGrid.vbproj", "{971A52EE-607D-41D3-BDE5-812C207B3ACF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{1B51577C-1406-4FB1-B025-306E7FF34FD9}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\InfragisticsWPF4.DataPresenter.v12.1.dll = Lib\InfragisticsWPF4.DataPresenter.v12.1.dll
+		Lib\InfragisticsWPF4.DockManager.v12.1.dll = Lib\InfragisticsWPF4.DockManager.v12.1.dll
+		Lib\InfragisticsWPF4.Editors.v12.1.dll = Lib\InfragisticsWPF4.Editors.v12.1.dll
+		Lib\InfragisticsWPF4.v12.1.dll = Lib\InfragisticsWPF4.v12.1.dll
+		Lib\Microsoft.Practices.Prism.dll = Lib\Microsoft.Practices.Prism.dll
+		Lib\Microsoft.Practices.Prism.Interactivity.dll = Lib\Microsoft.Practices.Prism.Interactivity.dll
+		Lib\Microsoft.Practices.Prism.UnityExtensions.dll = Lib\Microsoft.Practices.Prism.UnityExtensions.dll
+		Lib\Microsoft.Practices.ServiceLocation.dll = Lib\Microsoft.Practices.ServiceLocation.dll
+		Lib\Microsoft.Practices.Unity.dll = Lib\Microsoft.Practices.Unity.dll
+		Lib\WPFToolkit.Extended.dll = Lib\WPFToolkit.Extended.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
