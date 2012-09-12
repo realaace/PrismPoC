@@ -49,6 +49,7 @@
   <ItemGroup>
     <Reference Include="InfragisticsWPF4.DataPresenter.v12.1, Version=12.1.20121.2059, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\InfragisticsWPF4.DataPresenter.v12.1.dll</HintPath>
     </Reference>
     <Reference Include="InfragisticsWPF4.Editors.v12.1, Version=12.1.20121.2059, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">

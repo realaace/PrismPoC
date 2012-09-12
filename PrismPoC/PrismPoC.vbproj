@@ -99,6 +99,10 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit.Extended, Version=1.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="Application.xaml">
@@ -110,9 +114,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstrapper.vb" />
+    <Compile Include="Popup.xaml.vb">
+      <DependentUpon>Popup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SaveLayoutView.xaml.vb">
+      <DependentUpon>SaveLayoutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Shell.xaml.vb">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaveLayoutViewModel.vb" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="System.Linq" />
@@ -165,6 +176,14 @@
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Popup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaveLayoutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -6,4 +6,5 @@ Public NotInheritable Class RegionNames
     End Sub
 
     Public Shared ReadOnly DockingAreaRegion As String = "REGION_DockingArea"
+    Public Shared ReadOnly PopupRegion As String = "REGION_Popup"
 End Class

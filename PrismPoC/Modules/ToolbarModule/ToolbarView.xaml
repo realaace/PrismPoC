@@ -14,6 +14,9 @@
                 <Button Command="{Binding AddViewCommand}" CommandParameter="SavedQuery" BorderThickness="1">
                     <TextBlock>Saved Query</TextBlock>
                 </Button>
+                <Button Command="{Binding AddViewCommand}" CommandParameter="ListOfValue" BorderThickness="1">
+                    <TextBlock>LOV</TextBlock>
+                </Button>
             </ToolBar>
         </ToolBarTray>
     </Grid>
