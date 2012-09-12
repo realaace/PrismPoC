@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:prism="http://www.codeplex.com/prism" 
     xmlns:inf="clr-namespace:PrismPOC.Infrastructure;assembly=PrismPOC.Infrastructure"
+    xmlns:extToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
     Title="Shell" Height="768" Width="1024">
     <Grid>
         <Grid.LayoutTransform>
@@ -30,5 +31,10 @@
         </igDock:XamDockManager>
 
         <StatusBar Grid.Row="3"><Slider x:Name="ZoomSlider" Height="20"  Width="100" Minimum="1" Maximum="2" TickFrequency="0.2" TickPlacement="BottomRight" LargeChange="0.4" /></StatusBar>
+        <extToolkit:ChildWindow x:Name="cwPopup" Caption="Popup Window" IsModal="True" Width="800" Height="600" WindowState="Closed">
+            <Grid>
+                <ContentControl x:Name="ChildRegion" prism:RegionManager.RegionName="ChildRegion" />
+            </Grid>
+        </extToolkit:ChildWindow>
     </Grid>
 </Window>

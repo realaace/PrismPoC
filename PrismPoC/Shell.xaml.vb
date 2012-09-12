@@ -161,9 +161,13 @@ Public Class Shell
 
         Select Case viewType
             Case "ListOfValue"
-                Dim popUpWin As Popup = New Popup(_regionManager)
-                _regionManager.Regions(RegionNames.PopupRegion).Add(_container.Resolve(Of TransactionModule.TransactionView)())
-                popUpWin.ShowDialog()
+                'Dim popUpWin As Popup = New Popup(_regionManager)
+                '_regionManager.Regions(RegionNames.PopupRegion).Add(_container.Resolve(Of TransactionModule.TransactionView)())
+                'popUpWin.ShowDialog()
+                _regionManager.Regions("ChildRegion").Add(_container.Resolve(Of TransactionModule.TransactionView)())
+                cwPopup.Top = 50
+                cwPopup.Left = (Me.ActualWidth - 800) / 2
+                cwPopup.WindowState = Xceed.Wpf.Toolkit.WindowState.Open
         End Select
     End Sub
 
