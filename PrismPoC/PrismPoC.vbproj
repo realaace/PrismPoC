@@ -105,9 +105,13 @@
     <Compile Include="Popup.xaml.vb">
       <DependentUpon>Popup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaveLayoutView.xaml.vb">
+      <DependentUpon>SaveLayoutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Shell.xaml.vb">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaveLayoutViewModel.vb" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="System.Linq" />
@@ -161,6 +165,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Popup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SaveLayoutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -22,6 +22,8 @@ Public Class Shell
         _container = container
         _regionManager = regionManager
         _eventAggregator = eventAggregator
+
+        _container.RegisterType(Of SaveLayoutView)()
         _eventAggregator.GetEvent(Of SaveLayoutEvent)().Subscribe(AddressOf SaveLayout)
         _eventAggregator.GetEvent(Of LoadLayoutEvent)().Subscribe(AddressOf LoadLayout)
         _eventAggregator.GetEvent(Of ExitAppEvent)().Subscribe(AddressOf ExitApp)
@@ -159,15 +161,26 @@ Public Class Shell
 
     Private Sub AddView(ByVal viewType As String)
 
+        Dim view As IView
         Select Case viewType
             Case "ListOfValue"
                 'Dim popUpWin As Popup = New Popup(_regionManager)
                 '_regionManager.Regions(RegionNames.PopupRegion).Add(_container.Resolve(Of TransactionModule.TransactionView)())
                 'popUpWin.ShowDialog()
-                _regionManager.Regions("ChildRegion").Add(_container.Resolve(Of TransactionModule.TransactionView)())
+                view = _container.Resolve(Of TransactionModule.TransactionView)()
+                _regionManager.Regions("ChildRegion").Add(view)
                 cwPopup.Top = 50
                 cwPopup.Left = (Me.ActualWidth - 800) / 2
                 cwPopup.WindowState = Xceed.Wpf.Toolkit.WindowState.Open
+            Case "SaveLayout"
+                view = _container.Resolve(Of SaveLayoutView)()
+                _regionManager.Regions("ChildRegion").Add(view)
+                cwPopup.Width = 300
+                cwPopup.Height = 200
+                cwPopup.Top = 50
+                cwPopup.Left = (Me.ActualWidth - 300) / 2
+                cwPopup.WindowState = Xceed.Wpf.Toolkit.WindowState.Open
+
         End Select
     End Sub
 
