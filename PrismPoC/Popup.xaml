@@ -1,0 +1,10 @@
+﻿<Window x:Class="Popup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://www.codeplex.com/prism" 
+    xmlns:inf="clr-namespace:PrismPOC.Infrastructure;assembly=PrismPOC.Infrastructure"
+    Title="Popup" Height="600" Width="800">
+    <Grid>
+        <ContentControl x:Name="PopupRegion" prism:RegionManager.RegionName="{x:Static inf:RegionNames.PopupRegion}" />
+    </Grid>
+</Window>

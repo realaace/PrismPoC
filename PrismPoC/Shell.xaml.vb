@@ -10,6 +10,7 @@ Public Class Shell
     Private _container As IUnityContainer
     Private _regionManager As IRegionManager
     Private Shared paneNames As Dictionary(Of String, Integer)
+    Private _popupWin As Popup
 
 
     Public Sub New(container As IUnityContainer, regionManager As IRegionManager, eventAggregator As IEventAggregator)
@@ -26,7 +27,7 @@ Public Class Shell
         _eventAggregator.GetEvent(Of ExitAppEvent)().Subscribe(AddressOf ExitApp)
         _eventAggregator.GetEvent(Of SelectedItemChangedEvent)().Subscribe(AddressOf LoadSelectedItem)
         _eventAggregator.GetEvent(Of CreateViewEvent)().Subscribe(AddressOf CreateView)
-
+        _eventAggregator.GetEvent(Of TransactionButtonEvent)().Subscribe(AddressOf AddView)
 
     End Sub
 
@@ -154,6 +155,16 @@ Public Class Shell
             _regionManager.Regions(RegionNames.DockingAreaRegion).Add(_container.Resolve(Of PropertyGrid.PropertyGridView2)())
         End If
         _eventAggregator.GetEvent(Of ViewCreatedEvent)().Publish("Property")
+    End Sub
+
+    Private Sub AddView(ByVal viewType As String)
+
+        Select Case viewType
+            Case "ListOfValue"
+                Dim popUpWin As Popup = New Popup(_regionManager)
+                _regionManager.Regions(RegionNames.PopupRegion).Add(_container.Resolve(Of TransactionModule.TransactionView)())
+                popUpWin.ShowDialog()
+        End Select
     End Sub
 
 End Class

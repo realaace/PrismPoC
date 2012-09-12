@@ -98,6 +98,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstrapper.vb" />
+    <Compile Include="Popup.xaml.vb">
+      <DependentUpon>Popup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Shell.xaml.vb">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,10 @@
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Popup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
