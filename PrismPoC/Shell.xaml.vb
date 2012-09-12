@@ -43,6 +43,7 @@ Public Class Shell
             DockRegion.SaveLayout(fs)
         End Using
         'MessageBox.Show(String.Format("{0}: {1}", layoutName, layoutString))
+        cwPopup.WindowState = Xceed.Wpf.Toolkit.WindowState.Closed
     End Sub
 
     Private Sub LoadLayout()
@@ -161,20 +162,25 @@ Public Class Shell
 
     Private Sub AddView(ByVal viewType As String)
 
-        Dim view As IView
         Select Case viewType
             Case "ListOfValue"
                 'Dim popUpWin As Popup = New Popup(_regionManager)
                 '_regionManager.Regions(RegionNames.PopupRegion).Add(_container.Resolve(Of TransactionModule.TransactionView)())
                 'popUpWin.ShowDialog()
+                Dim view As TransactionModule.TransactionView
                 view = _container.Resolve(Of TransactionModule.TransactionView)()
                 _regionManager.Regions("ChildRegion").Add(view)
+                cwPopup.Caption = "List of Values"
+                cwPopup.Width = 800
+                cwPopup.Height = 600
                 cwPopup.Top = 50
                 cwPopup.Left = (Me.ActualWidth - 800) / 2
                 cwPopup.WindowState = Xceed.Wpf.Toolkit.WindowState.Open
             Case "SaveLayout"
+                Dim view As SaveLayoutView
                 view = _container.Resolve(Of SaveLayoutView)()
                 _regionManager.Regions("ChildRegion").Add(view)
+                cwPopup.Caption = "Save Layout"
                 cwPopup.Width = 300
                 cwPopup.Height = 200
                 cwPopup.Top = 50
@@ -184,4 +190,10 @@ Public Class Shell
         End Select
     End Sub
 
+    Private Sub cwPopup_Closing(sender As Object, e As ComponentModel.CancelEventArgs)
+        For Each view In _regionManager.Regions("ChildRegion").Views
+            _regionManager.Regions("ChildRegion").Remove(view)
+        Next
+
+    End Sub
 End Class

@@ -26,3 +26,7 @@ End Class
 Public Class ViewCreatedEvent
     Inherits CompositePresentationEvent(Of String)
 End Class
+
+Public Class SaveLayoutWithNameEvent
+    Inherits CompositePresentationEvent(Of String)
+End Class

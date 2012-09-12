@@ -10,7 +10,7 @@ Public Class SaveLayoutViewModel
     Private _layoutName As String
 
     Public Property OpenSaveLayoutDialogCommand As DelegateCommand
-    Public Property SaveLayoutCommand As DelegateCommand(Of String)
+    Public Property SaveLayoutCommand As DelegateCommand
 
     Public Property LayoutName As String
         Get
@@ -25,11 +25,11 @@ Public Class SaveLayoutViewModel
 
     Public Sub New(ByVal eventAggregator As IEventAggregator)
         _eventAggregator = eventAggregator
-        SaveLayoutCommand = New DelegateCommand(Of String)(AddressOf Me.SaveLayout, AddressOf Me.CanSaveLayout)
+        SaveLayoutCommand = New DelegateCommand(AddressOf Me.SaveLayout, AddressOf Me.CanSaveLayout)
     End Sub
 
-    Private Sub SaveLayout(layoutName As String)
-        MessageBox.Show("Layout Saved:" + layoutName)
+    Private Sub SaveLayout()
+        _eventAggregator.GetEvent(Of SaveLayoutEvent).Publish(LayoutName)
     End Sub
 
     Private Function CanSaveLayout() As Boolean
