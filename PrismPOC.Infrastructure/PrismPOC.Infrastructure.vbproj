@@ -82,6 +82,7 @@
     <Import Include="System.Windows.Navigation" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationCommands.vb" />
     <Compile Include="Events.vb" />
     <Compile Include="IView.vb" />
     <Compile Include="IViewModel.vb" />

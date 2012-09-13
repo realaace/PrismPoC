@@ -4,6 +4,7 @@ Imports PrismPoC.Infrastructure
 Imports Infragistics.Windows.DockManager
 Imports System.IO
 Imports Microsoft.Practices.Unity
+Imports System.Text.RegularExpressions
 
 Public Class Shell
     Private _eventAggregator As IEventAggregator
@@ -12,8 +13,17 @@ Public Class Shell
     Private Shared paneNames As Dictionary(Of String, Integer)
     Private _popupWin As Popup
 
+    Public Property ViewModel As ShellViewModel
+        Get
+            Return CType(DataContext, ShellViewModel)
+        End Get
+        Set(value As ShellViewModel)
+            DataContext = value
+        End Set
+    End Property
 
-    Public Sub New(container As IUnityContainer, regionManager As IRegionManager, eventAggregator As IEventAggregator)
+
+    Public Sub New(container As IUnityContainer, regionManager As IRegionManager, eventAggregator As IEventAggregator, ByVal vm As ShellViewModel)
         InitializeComponent()
         If IsNothing(paneNames) Then
             paneNames = New Dictionary(Of String, Integer)
@@ -22,6 +32,7 @@ Public Class Shell
         _container = container
         _regionManager = regionManager
         _eventAggregator = eventAggregator
+        ViewModel = vm
 
         _container.RegisterType(Of SaveLayoutView)()
         _eventAggregator.GetEvent(Of SaveLayoutEvent)().Subscribe(AddressOf SaveLayout)
@@ -46,7 +57,7 @@ Public Class Shell
         cwPopup.WindowState = Xceed.Wpf.Toolkit.WindowState.Closed
     End Sub
 
-    Private Sub LoadLayout()
+    Private Sub LoadLayout(ByVal layoutName As String)
 
         RenumberPanes()
 
@@ -72,6 +83,7 @@ Public Class Shell
             Case "PropertyGrid"
                 e.NewPane.Content = _container.Resolve(Of PropertyGrid.PropertyGridView2)()
                 e.NewPane.Header = "Properties"
+            Case Else
         End Select
     End Sub
 
@@ -98,21 +110,19 @@ Public Class Shell
         Next
     End Sub
 
-    Private Sub ExitApp()
+    Private Sub ExitApp(ByVal obj As String)
         Me.Close()
     End Sub
 
     Private Sub LoadSelectedItem(selectedItem As Object)
-        Dim panes As IEnumerable(Of ContentPane)
-        panes = DockRegion.GetPanes(PaneNavigationOrder.ActivationOrder)
+        Dim panes As IEnumerable(Of ContentPane) = DockRegion.GetPanes(PaneNavigationOrder.ActivationOrder)
 
         Dim found As Boolean = False
 
         For Each cp As ContentPane In panes
             Dim cpName As String = cp.Name
             If cpName.Contains("PropertyGrid") Then
-                Dim pgvm As PropertyGrid.PropertyGridViewModel
-                pgvm = cp.Content.ViewModel
+                Dim pgvm As PropertyGrid.PropertyGridViewModel = cp.Content.ViewModel
                 If pgvm.ParentHashCode = selectedItem(0) Then
                     pgvm.SelectedObject = selectedItem(1)
                     found = True
@@ -138,16 +148,14 @@ Public Class Shell
 
     Private Sub CreateView(ByVal viewType As String)
 
-        Dim panes As IEnumerable(Of ContentPane)
-        panes = DockRegion.GetPanes(PaneNavigationOrder.ActivationOrder)
+        Dim panes As IEnumerable(Of ContentPane) = DockRegion.GetPanes(PaneNavigationOrder.ActivationOrder)
         paneNames.Clear()
 
         Dim found As Boolean = False
         For Each cp As ContentPane In panes
             Dim cpName As String = cp.Name
             If cpName.Contains("PropertyGrid") Then
-                Dim pgvm As PropertyGrid.PropertyGridViewModel
-                pgvm = cp.Content.ViewModel
+                Dim pgvm As PropertyGrid.PropertyGridViewModel = cp.Content.ViewModel
                 If pgvm.ParentHashCode = 0 Then
                     found = True
                     Exit For
@@ -167,8 +175,7 @@ Public Class Shell
                 'Dim popUpWin As Popup = New Popup(_regionManager)
                 '_regionManager.Regions(RegionNames.PopupRegion).Add(_container.Resolve(Of TransactionModule.TransactionView)())
                 'popUpWin.ShowDialog()
-                Dim view As TransactionModule.TransactionView
-                view = _container.Resolve(Of TransactionModule.TransactionView)()
+                Dim view As TransactionModule.TransactionView = _container.Resolve(Of TransactionModule.TransactionView)()
                 _regionManager.Regions("ChildRegion").Add(view)
                 cwPopup.Caption = "List of Values"
                 cwPopup.Width = 800
@@ -177,8 +184,7 @@ Public Class Shell
                 cwPopup.Left = (Me.ActualWidth - 800) / 2
                 cwPopup.WindowState = Xceed.Wpf.Toolkit.WindowState.Open
             Case "SaveLayout"
-                Dim view As SaveLayoutView
-                view = _container.Resolve(Of SaveLayoutView)()
+                Dim view As SaveLayoutView = _container.Resolve(Of SaveLayoutView)()
                 _regionManager.Regions("ChildRegion").Add(view)
                 cwPopup.Caption = "Save Layout"
                 cwPopup.Width = 300
@@ -187,6 +193,7 @@ Public Class Shell
                 cwPopup.Left = (Me.ActualWidth - 300) / 2
                 cwPopup.WindowState = Xceed.Wpf.Toolkit.WindowState.Open
 
+            Case Else
         End Select
     End Sub
 

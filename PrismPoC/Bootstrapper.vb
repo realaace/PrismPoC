@@ -20,6 +20,12 @@ Public Class Bootstrapper
         Application.Current.MainWindow.Show()
     End Sub
 
+    Protected Overrides Sub ConfigureContainer()
+        MyBase.ConfigureContainer()
+        Container.RegisterType(Of ShellViewModel)()
+    End Sub
+
+
     Protected Overrides Sub ConfigureModuleCatalog()
         MyBase.ConfigureModuleCatalog()
 
